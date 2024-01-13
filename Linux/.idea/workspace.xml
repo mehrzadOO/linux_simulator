@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="305a16f6-3ae9-4335-911e-74972b3f8412" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Linux.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2afGCgM9HpKV77obvV0krZ4TqZg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/User/Desktop/git_linux/linux_simulator",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="305a16f6-3ae9-4335-911e-74972b3f8412" name="Changes" comment="" />
+      <created>1704702094703</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704702094703</updated>
+      <workItem from="1704702095520" duration="6612000" />
+      <workItem from="1704745403410" duration="2165000" />
+      <workItem from="1704747939773" duration="66000" />
+      <workItem from="1704748013062" duration="9000" />
+      <workItem from="1704748040508" duration="6000" />
+      <workItem from="1704810932971" duration="710000" />
+      <workItem from="1704811849257" duration="12000" />
+      <workItem from="1704814368677" duration="8459000" />
+      <workItem from="1704828859123" duration="4927000" />
+      <workItem from="1704884571392" duration="1485000" />
+      <workItem from="1704886655778" duration="3913000" />
+      <workItem from="1704892941851" duration="423000" />
+      <workItem from="1704903579735" duration="157000" />
+      <workItem from="1704920982749" duration="927000" />
+      <workItem from="1704922391061" duration="2000" />
+      <workItem from="1704922647361" duration="453000" />
+      <workItem from="1704985766370" duration="3207000" />
+      <workItem from="1705049724453" duration="13810000" />
+      <workItem from="1705070774907" duration="91000" />
+      <workItem from="1705139041496" duration="446000" />
+      <workItem from="1705155943173" duration="1256000" />
+      <workItem from="1705157210139" duration="1603000" />
+      <workItem from="1705176974339" duration="119000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Linux$main.coverage" NAME="main Coverage Results" MODIFIED="1705158105523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
