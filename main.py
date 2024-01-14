@@ -31,16 +31,18 @@ class System:
         self.currentAccount = None
         self.root = File("root", "directory")
         self.currentDirectory = self.root
-        self.accounts = ["root", "admin"]
+        self.accounts = [{"name": "root", "chmod": "3"}, {"name": "admin", "chmod": "2"}, {"name": "user", "chmod": "1"}]
 
     def su(self, username):
-        if username in self.accounts:
-            print(f"You have switched to {username}")
-            self.currentAccount = username
-            return True
-        else:
+        check = False
+        for item in self.accounts:
+            if username == item["name"]:
+                self.currentAccount = item
+                print(f"You have switched to {username}")
+                check = True
+                break
+        if not check:
             print("Invalid account name")
-            return False
 
     def pwd(self):
         if self.currentAccount:
@@ -420,7 +422,8 @@ print("Welcome to the file system simulator")
 print("Type help for a list of commands")
 while True:
     if system.currentAccount:
-        print(f"{system.currentAccount}: ", end="")
+        name = system.currentAccount["name"]
+        print(f"{name}: ", end="")
         print(system.pwd(), end="")
         print(" :> ", end="")
     else:
@@ -442,15 +445,18 @@ while True:
     elif word[0] == "pwd":
         system.pwd()
     elif word[0] == "mkdir":
-        if check_address_relative(command):
-            print("Invalid address.")
-        elif len(word) == 1:
-            print("Invalid address.")
-        else:
-            if word[1][0] == '/':
-                system.mkdir_absolute_path(word[1])
+        if system.currentAccount["chmod"] == "3":
+            if check_address_relative(command):
+                print("Invalid address.")
+            elif len(word) == 1:
+                print("Invalid address.")
             else:
-                system.mkdir_relative_path(word[1])
+                if word[1][0] == '/':
+                    system.mkdir_absolute_path(word[1])
+                else:
+                    system.mkdir_relative_path(word[1])
+        else:
+            print("You do not have access.")
     elif word[0] == "rmkdir":
         if check_address_relative(command):
             print("Invalid address.")
