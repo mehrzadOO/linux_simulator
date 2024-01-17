@@ -401,7 +401,7 @@ def help():
     print("mkdir /absolute_path/name: add directory in absolute path.")
     print("touch name: add a file in current directory.")
     print("cd name: change directory to name.")
-    print("sz: return a number of directory and file in current directory.")
+
 
 
 def check_address_relative(command):
