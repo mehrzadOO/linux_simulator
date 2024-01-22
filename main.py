@@ -31,7 +31,7 @@ class System:
         self.currentAccount = None
         self.root = File("root", "directory")
         self.currentDirectory = self.root
-        self.accounts = [{"name": "root", "chmod": "3"}, {"name": "admin", "chmod": "2"}, {"name": "user", "chmod": "1"}]
+        self.accounts = [{"name": "root", "chmod": 3}, {"name": "admin", "chmod": 2}, {"name": "user", "chmod": 1}]
 
     def su(self, username):
         check = False
@@ -306,7 +306,31 @@ class System:
                     print("Invalid syntax4.")
         else:
             print("Please login first.")
-
+    def find(self, absolute_path, type, name, search):
+        if self.currentAccount:
+            check = True
+            current_directory = self.root
+            paths = absolute_path.split('/')
+            if ' ' in paths:
+                print("Invalid address.")
+            elif paths[1] != self.root.name:
+                print("Invalid address.")
+            else:
+                name_directory = paths[len(paths) - 1]
+                for i in range(2, len(paths) - 1):
+                    children_name = current_directory.save_children_name()
+                    if paths[i] in children_name:
+                        for child in current_directory.children:
+                            if paths[i] == child.name:
+                                current_directory = child
+                    else:
+                        print(f"The {paths[i]} is not exited.")
+                        check = False
+                        break
+                if check:
+                    pass
+        else:
+            print("Please login first.")
     def print_prent(self):
         parent_name = []
         current_dir = self.currentDirectory
@@ -445,7 +469,7 @@ while True:
     elif word[0] == "pwd":
         system.pwd()
     elif word[0] == "mkdir":
-        if system.currentAccount["chmod"] == "3":
+        if system.currentAccount["chmod"] >= 2:
             if check_address_relative(command):
                 print("Invalid address.")
             elif len(word) == 1:
@@ -458,24 +482,44 @@ while True:
         else:
             print("You do not have access.")
     elif word[0] == "rmkdir":
-        if check_address_relative(command):
-            print("Invalid address.")
-        elif len(word) == 1:
-            print("Invalid address.")
-        else:
-            if word[1][0] == '/':
-                system.rmkdir_absolute_path(word[1])
+        if system.currentAccount["chmod"] >= 2:
+            if check_address_relative(command):
+                print("Invalid address.")
+            elif len(word) == 1:
+                print("Invalid address.")
             else:
-                system.rmkdir_relative_path(word[1])
+                if word[1][0] == '/':
+                    system.rmkdir_absolute_path(word[1])
+                else:
+                    system.rmkdir_relative_path(word[1])
+        else:
+            print("You do not have access.")
     elif word[0] == "cp":
-        system.cp(word[1])
+        if system.currentAccount["chmod"] >= 2:
+            system.cp(word[1])
+        else:
+            print("You do not have access.")
     elif word[0] == "mv":
-        system.mv(word[1])
+        if system.currentAccount["chmod"] >= 2:
+            system.mv(word[1])
+        else:
+            print("You do not have access.")
     elif word[0] == "touch":
-        if len(word) == 1:
-            print("Write your file name.")
-        elif len(word) == 2:
-            system.touch(word[1])
+        if system.currentAccount["chmod"] >= 2:
+            if len(word) == 1:
+                print("Write your file name.")
+            elif len(word) == 2:
+                system.touch(word[1])
+            else:
+                print("Invalid syntax.")
+        else:
+            print("You do not have access.")
+    elif word[0] == "find":
+        if len(word) == 5:
+            absolute_path = word[1]
+            type = word[2]
+            name = word[3]
+            search = word[4]
         else:
             print("Invalid syntax.")
     elif word[0] == "help":
