@@ -306,15 +306,40 @@ class System:
                     print("Invalid syntax4.")
         else:
             print("Please login first.")
+
+    def bfs(self, address, target, file_type):
+        queue = []
+        queue.append(address)
+        path = []
+        while queue:
+            node = queue.pop(0)
+            path.append(node.name)
+            if node.name == target and node.fileType == file_type:
+                return path
+            for child in node.children:
+                queue.append(child)
+        return None
+
+    def dfs(self, address, target, file_type):
+        result = []
+        queue = [address]
+        while queue:
+            node = queue.pop(0)
+            if node.fileType == file_type and node.name == name:
+                result.append(node)
+            if node.children:
+                queue.extend(node.children)
+        return result
+
     def find(self, absolute_path, type, name, search):
         if self.currentAccount:
             check = True
             current_directory = self.root
             paths = absolute_path.split('/')
             if ' ' in paths:
-                print("Invalid address.")
+                print("Invalid address1.")
             elif paths[1] != self.root.name:
-                print("Invalid address.")
+                print("Invalid address2.")
             else:
                 name_directory = paths[len(paths) - 1]
                 for i in range(2, len(paths) - 1):
@@ -328,9 +353,17 @@ class System:
                         check = False
                         break
                 if check:
-                    pass
+                    if search == "bfs":
+                        list_path = self.bfs(current_directory, name, type)
+                        print(list_path)
+                    elif search == "dfs":
+                        list_path = self.dfs(current_directory, name, type)
+                        print(list_path)
+                    else:
+                        print("Invalid syntax32.")
         else:
             print("Please login first.")
+
     def print_prent(self):
         parent_name = []
         current_dir = self.currentDirectory
@@ -412,8 +445,6 @@ class System:
         print(f"dir: {len(self.currentDirectory.children)}")
         print(f"fl: {len(self.currentDirectory.content)}")
 
-    def find(self):
-        pass
 
 
 # main
@@ -520,6 +551,7 @@ while True:
             type = word[2]
             name = word[3]
             search = word[4]
+            system.find(absolute_path, type, name, search)
         else:
             print("Invalid syntax.")
     elif word[0] == "help":
