@@ -308,6 +308,7 @@ class System:
             print("Please login first.")
 
     def bfs(self, address, target, file_type):
+        check = False
         queue = []
         queue.append(address)
         path = []
@@ -315,21 +316,30 @@ class System:
             node = queue.pop(0)
             path.append(node.name)
             if node.name == target and node.fileType == file_type:
-                return path
+                check = True
+                break
             for child in node.children:
                 queue.append(child)
-        return None
+        if check:
+            return path
+        else:
+            print("not")
 
     def dfs(self, address, target, file_type):
+        check = False
         result = []
         queue = [address]
         while queue:
             node = queue.pop(0)
-            if node.fileType == file_type and node.name == name:
+            if node.fileType == file_type and node.name == target:
+                check = True
                 result.append(node)
             if node.children:
                 queue.extend(node.children)
-        return result
+        if check:
+            return result
+        else:
+            print("not")
 
     def find(self, absolute_path, type, name, search):
         if self.currentAccount:
@@ -341,8 +351,7 @@ class System:
             elif paths[1] != self.root.name:
                 print("Invalid address2.")
             else:
-                name_directory = paths[len(paths) - 1]
-                for i in range(2, len(paths) - 1):
+                for i in range(2, len(paths)):
                     children_name = current_directory.save_children_name()
                     if paths[i] in children_name:
                         for child in current_directory.children:
@@ -353,11 +362,17 @@ class System:
                         check = False
                         break
                 if check:
-                    if search == "bfs":
-                        list_path = self.bfs(current_directory, name, type)
+                    if search == "bfs" and type == "d":
+                        list_path = self.bfs(current_directory, name, "directory")
                         print(list_path)
-                    elif search == "dfs":
-                        list_path = self.dfs(current_directory, name, type)
+                    elif search == "bfs" and type == "f":
+                        list_path = self.bfs(current_directory, name, "file")
+                        print(list_path)
+                    elif search == "dfs" and type == "d":
+                        list_path = self.dfs(current_directory, name, "directory")
+                        print(list_path)
+                    elif search == "dfs" and type == "f":
+                        list_path = self.dfs(current_directory, name, "file")
                         print(list_path)
                     else:
                         print("Invalid syntax32.")
@@ -454,9 +469,10 @@ def help():
     print("pwd: the path of root to current node.")
     print("mkdir relative_path/name: add directory in relative path.")
     print("mkdir /absolute_path/name: add directory in absolute path.")
+    print("rmdir name: delete name directory.")
     print("touch name: add a file in current directory.")
     print("cd name: change directory to name.")
-
+    print("find absolute_path type name search: find name directory or file.")
 
 
 def check_address_relative(command):
