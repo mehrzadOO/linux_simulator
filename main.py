@@ -325,22 +325,6 @@ class System:
         else:
             print("not")
 
-    def dfs(self, address, target, file_type):
-        check = False
-        result = []
-        queue = [address]
-        while queue:
-            node = queue.pop(0)
-            if node.fileType == file_type and node.name == target:
-                check = True
-                result.append(node)
-            if node.children:
-                queue.extend(node.children)
-        if check:
-            return result
-        else:
-            print("not")
-
     def find(self, absolute_path, type, name, search):
         if self.currentAccount:
             check = True
@@ -367,12 +351,6 @@ class System:
                         print(list_path)
                     elif search == "bfs" and type == "f":
                         list_path = self.bfs(current_directory, name, "file")
-                        print(list_path)
-                    elif search == "dfs" and type == "d":
-                        list_path = self.dfs(current_directory, name, "directory")
-                        print(list_path)
-                    elif search == "dfs" and type == "f":
-                        list_path = self.dfs(current_directory, name, "file")
                         print(list_path)
                     else:
                         print("Invalid syntax32.")
